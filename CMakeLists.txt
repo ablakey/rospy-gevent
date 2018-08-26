@@ -8,6 +8,16 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package()
 
 catkin_install_python(
-    PROGRAMS
-        scripts/gevent_publisher
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+  PROGRAMS
+        scripts/greenlet_simple
+        scripts/patched_publisher
+        scripts/patched_subscriber
+        scripts/patched_threads
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+install(
+  DIRECTORY launch/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
+  FILES_MATCHING PATTERN "*.launch"
+)

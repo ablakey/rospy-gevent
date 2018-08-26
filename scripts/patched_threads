@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+from gevent import monkey, sleep, Greenlet
+monkey.patch_all()  # noqa
+import threading
+import gc
+
+'''
+In this example we monkey patch the stdlib and then spawn threads. You want to create greenlets explicitly, but this
+shows how code we don't have control over gets monkey patched.
+
+We expect 3 threads and 2 greenlets. In reality, there's one main thread, and two additional threads created, but these
+are monkey patched to be greenlets. Even though they're greenlets, they still report as threads as monkey.patch_all()
+works to guarantee as much API consistency as possible.
+'''
+
+
+class ExampleThread(threading.Thread):
+    def run(self):
+        for i in xrange(10):
+            thread_count = threading.active_count()
+            greenlet_count = len([g for g in gc.get_objects() if isinstance(g, Greenlet)])
+            print('Thread count: {}. Greenlet count: {}'.format(thread_count, greenlet_count))
+            sleep(1)
+
+
+if __name__ == '__main__':
+    worker = ExampleThread()
+    worker.start()
+
+    worker2 = ExampleThread()
+    worker2.start()

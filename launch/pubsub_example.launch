@@ -1,0 +1,4 @@
+<launch>
+  <node name="patched_publisher" pkg="rospy_gevent" type="patched_publisher" output="screen"/>
+  <node name="patched_subscriber" pkg="rospy_gevent" type="patched_subscriber" output="screen"/>
+</launch>

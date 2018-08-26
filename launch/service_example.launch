@@ -1,0 +1,4 @@
+<launch>
+  <node name="patched_service_provider" pkg="rospy_gevent" type="patched_service_provider" output="screen"/>
+  <node name="patched_service_proxy" pkg="rospy_gevent" type="patched_service_proxy" output="screen"/>
+</launch>
