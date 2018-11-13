@@ -7,7 +7,7 @@ import rospy
 from std_srvs.srv import SetBool
 
 '''
-In this example we patch the stdlib (see other examples for more details), then send
+In this example we patch the stdlib (see other examples for more details), then make a ros service call.
 '''
 
 if __name__ == '__main__':
