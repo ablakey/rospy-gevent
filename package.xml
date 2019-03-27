@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>rospy_gevent</name>
+  <name>rospy-gevent</name>
   <version>0.1.1</version>
   <description>Experiments and examples of patching rospy to use co-operative multitasking.</description>
 
